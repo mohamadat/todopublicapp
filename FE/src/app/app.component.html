@@ -1,0 +1,43 @@
+<nav class="bg-light shadow pb-3 mb-3">
+
+
+<div *ngIf="loginuser">
+  <h1 class="text-primary" style="position: absolute; top: 30px; left: 10px;">Welcome {{loginuser.uname}}
+    ,  </h1>
+</div>
+<div *ngIf="!loginuser">
+  <h1 class="text-primary" style="position: absolute; top: 30px; left: 10px;">Log In</h1>
+</div>
+  <ul class="nav justify-content-center pt-5">
+    <li class="nav-item ml-0 px-5 ">
+      <a routerLink="/" routerLinkActive="active" class="nav-link btn btn-primary">Home</a>
+    </li>
+    <li class="nav-item mx-3">
+      <a routerLink="/user" routerLinkActive="active" class="nav-link btn btn-outline-primary">User</a>
+    </li>
+    <li class="nav-item mx-3">
+      <a routerLink="/task" routerLinkActive="active" class="nav-link btn btn-outline-primary">Task</a>
+    </li>
+    <li class="nav-item mx-3">
+      <a routerLink="/list" routerLinkActive="active" class="nav-link btn btn-outline-primary">List</a>
+    </li>
+    <li class="nav-item mx-3">
+      <a routerLink="/doc" routerLinkActive="active" class="nav-link btn btn-outline-primary" tabindex="-1">Docs</a>
+    </li>
+  </ul>
+</nav>
+
+<!-- <input [(ngModel)]="loginuser.uname" type="text"> -->
+
+<!-- <div *ngFor="let user of lstusers">
+  <h2>user.uname</h2>
+</div> -->
+
+<!-- <div *ngIf="loginuser">
+  <input [(ngModel)]="loginuser.uname" type="text">
+
+  <p>loginuser.uname</p>
+</div> -->
+<router-outlet></router-outlet>
+
+

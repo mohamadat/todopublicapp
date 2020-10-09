@@ -1,0 +1,117 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-6">
+        <!-- //add one more list -->
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="jumbotron">
+              <h1 class="display-4">Add one more list,</h1>
+              <h2 *ngIf="loginuser">Welcome {{loginuser.uname}}  </h2>
+              <p class="lead">Here you can add a new list that holds your tasks</p>
+              <hr class="my-4">
+              <div>
+                <form #taskform="ngForm" (ngSubmit)="onSubmit(taskform.value)"
+                novalidate>
+                <div class="form-group">
+                    <label for="title">List Title</label>
+                    <input type="text"  ngModel class="form-control" id="title" aria-describedby="emailHelp" name="title" placeholder="Enter title" ngModel>
+                  </div>
+                  <div class="form-group">
+                    <label for="desc">List Description</label>
+                    <input type="text" ngModel class="form-control"  name="desc" id="desc" placeholder="Enter Descreption" >
+                  </div>
+                  <button type="submit" class="btn w-75 btn-lg btn-primary">Save List</button>
+                  <a routerLink="/register" class="btn w-25 btn-lg btn-danger">New user</a>
+
+                </form>
+              </div>
+
+
+            </div>
+
+          </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6">
+    </div>
+  </div>
+  <div class="row">
+      <!-- //all lists section -->
+    <div class="col-12 col-md-6">
+
+
+         <!-- //all lists are -->
+
+        <div class="row justify-content-left align-items-center main-row">
+          <div class="col shadow main-col bg-white">
+            <div class="row bg-primary text-white">
+              <div class="col  p-2">
+                <h4>Todo App</h4>
+                <h1>all lists :</h1>
+              </div>
+            </div>
+          <div *ngFor="let list of allLists">
+
+            <div class="row justify-content-between p-2">
+                  <div class="form-group flex-fill mb-2">
+                    <div>
+                      <h5 class="bg-light">List title :{{list.title}}</h5>
+                      <small>List title :{{list.desc}}</small>
+                    </div>
+                      <form #addlist="ngForm" (ngSubmit)="onSubmit(addlist.value)" class="w-100">
+                        <input type="text" class="form-group w-100" ngModel name="title" placeholder="add a new task to this list">
+                        <button type="button" (click)="showTodo(list, addlist.value);" class="btn btn-primary mb-2 ml-2">Show all tasks</button>
+                        <button type="button" (click)="CreateTodo(list,addlist.value)" class="btn btn-primary mb-2 ml-2">Add todo task</button>
+
+                    </form>
+
+                  </div>
+
+            </div>
+            <hr>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="row justify-content-left align-items-center main-row">
+        <div class="col shadow main-col bg-white">
+          <div class="row bg-primary text-white">
+            <div class="col  p-2">
+              <h4>Todo App</h4>
+              <h1 *ngIf="selectedList">all tasks of {{selectedList.title}}</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+      <div *ngFor="let task of allmytasks">
+        <h2 class="bg-light">task: {{task.title}}</h2>
+
+
+                <app-todo-task [mytask]="task" [listtypes]="allLists"></app-todo-task>
+
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+
+</div>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+

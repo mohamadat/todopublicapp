@@ -1,0 +1,26 @@
+<!-- {{mytask.id}} -->
+<!-- <form></form> -->
+<div class="row">
+    <form action="" class="w-100">
+      {{updatedtask}}
+      {{mytask.title}}
+      <div class="input-group mb-3 justify-content-center">
+      <div class="input-group-append">
+        <input type="text" class="form-control w-100" [(ngModel)]="updatedtask">
+
+        <button class="btn btn-danger" (click)="onDelete()">Delete</button>
+      </div>
+
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Move to</button>
+        <div *ngFor="let listtype of listtypes" class="dropdown-menu">
+          <a value="" class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">{{listtype.title}}</a>
+        </div>
+      </div>
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" (click)="onUpdate('cd')">Update</button>
+      </div>
+    </div>
+  </form>
+</div>
